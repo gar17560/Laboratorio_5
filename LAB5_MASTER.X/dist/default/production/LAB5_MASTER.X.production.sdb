@@ -1,0 +1,272 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 6 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"30 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\funciones0.c
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+"50
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"61
+[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
+"68
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"84
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+"94
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+"102
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+"118
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+"125
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+"141
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+"151
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+"160
+[v _I2C_Master_Read I2C_Master_Read `(ui  1 e 2 0 ]
+"193
+[v _uint_to_char uint_to_char `(uc  1 e 1 0 ]
+"264
+[v _mapear mapear `(*.4ui  1 e 1 0 ]
+"36 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\LAB_5_MASTER.c
+[v _main main `(v  1 e 1 0 ]
+"78
+[v _config config `(v  1 e 1 0 ]
+"166 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"228
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"352
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+[s S120 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"369
+[u S129 . 1 `S120 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES129  1 e 1 @8 ]
+"843
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"850
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1416
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1478
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+[s S146 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1557
+[u S155 . 1 `S146 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES155  1 e 1 @135 ]
+"1602
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1979
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
+[s S167 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"1996
+[u S176 . 1 `S167 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES176  1 e 1 @145 ]
+"2048
+[v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
+"2177
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3449
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"3896
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"4040
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"4274
+[v _SSPIE SSPIE `VEb  1 e 0 @1123 ]
+"4277
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"4457
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
+"4460
+[v _TRISC4 TRISC4 `VEb  1 e 0 @1084 ]
+"29 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\LAB_5_MASTER.c
+[v _contador1 contador1 `uc  1 e 1 0 ]
+"30
+[v _valor_adc valor_adc `uc  1 e 1 0 ]
+"32
+[v _valor1 valor1 `*.4ui  1 e 1 0 ]
+"36
+[v _main main `(v  1 e 1 0 ]
+{
+"75
+} 0
+"193 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\funciones0.c
+[v _uint_to_char uint_to_char `(uc  1 e 1 0 ]
+{
+[v uint_to_char@numero numero `uc  1 a 1 wreg ]
+"194
+[v uint_to_char@numChr numChr `uc  1 a 1 3 ]
+"193
+[v uint_to_char@numero numero `uc  1 a 1 wreg ]
+[v uint_to_char@numero numero `uc  1 a 1 2 ]
+"248
+} 0
+"264
+[v _mapear mapear `(*.4ui  1 e 1 0 ]
+{
+[v mapear@valor valor `uc  1 a 1 wreg ]
+"265
+[v mapear@resultado resultado `[3]ui  1 a 6 1 ]
+"266
+[v mapear@dividendo dividendo `ui  1 a 2 7 ]
+"264
+[v mapear@valor valor `uc  1 a 1 wreg ]
+[v mapear@limReal limReal `uc  1 p 1 6 ]
+[v mapear@limSup limSup `uc  1 p 1 7 ]
+[v mapear@valor valor `uc  1 a 1 0 ]
+"283
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"78 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\LAB_5_MASTER.c
+[v _config config `(v  1 e 1 0 ]
+{
+"90
+} 0
+"94 C:\Users\ICHELECE\Desktop\VII semestre\Progras digital 2\Laboratorio 5\Nueva carpeta\Laboratorio_5\LAB5_MASTER.X\funciones0.c
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+{
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"96
+[v Lcd_Write_String@n n `i  1 a 2 2 ]
+"94
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"97
+[v Lcd_Write_String@a a `*.24uc  1 a 1 4 ]
+"100
+} 0
+"84
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+{
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"86
+[v Lcd_Write_Char@a a `uc  1 a 1 1 ]
+"92
+} 0
+"68
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+{
+"70
+[v Lcd_Set_Cursor@d d `i  1 a 2 8 ]
+"68
+[v Lcd_Set_Cursor@a a `i  1 p 2 4 ]
+[v Lcd_Set_Cursor@b b `i  1 p 2 6 ]
+"81
+} 0
+"30
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+{
+"48
+} 0
+"61
+[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
+{
+"66
+} 0
+"50
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+{
+[v Lcd_Cmd@a a `i  1 p 2 0 ]
+"59
+} 0
+"151
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+{
+[v I2C_Master_Write@d d `ui  1 p 2 0 ]
+"155
+} 0
+"141
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+{
+"145
+} 0
+"125
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"129
+} 0
+"160
+[v _I2C_Master_Read I2C_Master_Read `(ui  1 e 2 0 ]
+{
+"162
+[v I2C_Master_Read@temp temp `us  1 a 2 4 ]
+"160
+[v I2C_Master_Read@a a `ui  1 p 2 0 ]
+"175
+} 0
+"118
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"121
+} 0
+"102
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+{
+[v I2C_Master_Init@c c `DCul  1 p 4 0 ]
+"110
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"30
+} 0
