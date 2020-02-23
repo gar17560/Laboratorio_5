@@ -683,15 +683,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 159 ]
 }
 "160
-[; ;funciones0.c: 160: unsigned int I2C_Master_Read(unsigned int a)
-[v _I2C_Master_Read `(ui ~T0 @X0 1 ef1`ui ]
+[; ;funciones0.c: 160: short I2C_Master_Read(short a)
+[v _I2C_Master_Read `(s ~T0 @X0 1 ef1`s ]
 "161
 [; ;funciones0.c: 161: {
 {
 [e :U _I2C_Master_Read ]
 "160
-[; ;funciones0.c: 160: unsigned int I2C_Master_Read(unsigned int a)
-[v _a `ui ~T0 @X0 1 r1 ]
+[; ;funciones0.c: 160: short I2C_Master_Read(short a)
+[v _a `s ~T0 @X0 1 r1 ]
 "161
 [; ;funciones0.c: 161: {
 [f ]
@@ -715,7 +715,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C_Master_Wait ..  ]
 "168
 [; ;funciones0.c: 168:     if(a == 1){
-[e $ ! == _a -> -> 1 `i `ui 161  ]
+[e $ ! == -> _a `i -> 1 `i 161  ]
 {
 "169
 [; ;funciones0.c: 169:         SSPCON2bits.ACKDT = 0;
@@ -738,7 +738,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
 "174
 [; ;funciones0.c: 174:     return temp;
-[e ) -> _temp `ui ]
+[e ) -> _temp `s ]
 [e $UE 160  ]
 "175
 [; ;funciones0.c: 175: }

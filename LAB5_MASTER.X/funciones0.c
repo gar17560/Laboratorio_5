@@ -157,7 +157,7 @@ void I2C_Master_Write(unsigned d)
 //Función de recepción de datos enviados por el esclavo al maestro
 //esta función es para leer los datos que están en el esclavo
 //*****************************************************************************
-unsigned int I2C_Master_Read(unsigned int a)
+short I2C_Master_Read(short a)
 {
     unsigned short temp;
     I2C_Master_Wait();      //espera que se cumplan las condiciones adecuadas

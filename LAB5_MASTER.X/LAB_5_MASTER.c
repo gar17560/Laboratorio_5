@@ -29,7 +29,9 @@ void config (void);
 uint8_t contador1;
 uint8_t valor_adc;
 uint8_t contador = 0;
-uint16_t * valor1;
+uint16_t *valor1;
+short *valor2;
+uint16_t temp;
 
 
 
@@ -38,7 +40,7 @@ void main(void) {
     Lcd_Init();
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("S1  S2    S3");
+    Lcd_Write_String("S1   S2     S3");
     I2C_Master_Init(100000);      //Initialize I2C Master with 100KHz clock
     while(1){
         I2C_Master_Start();
@@ -47,28 +49,45 @@ void main(void) {
         I2C_Master_Stop();
         __delay_ms(50);
         
+        ////////////////////////////////////////////////////////////////////////
         I2C_Master_Start();
         I2C_Master_Write(0x51);
         valor_adc = I2C_Master_Read(0);
         I2C_Master_Stop();
         __delay_ms(50);
-        
-        PORTA = contador1;
-        
         valor1 = mapear(valor_adc, 255, 5);
+        
+        ////////////////////////////////////////////////////////////////////////
+        I2C_Master_Start();
+        I2C_Master_Write(0x07);
+        temp = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        __delay_ms(50);
+        
+
+        ////////////////////////////////////////////////////////////////////////
+        
       
-        Lcd_Set_Cursor(2,2);
+        Lcd_Set_Cursor(2,1);
+        Lcd_Write_String("0x");
         Lcd_Write_Char(uint_to_char(contador1)); 
         __delay_ms(50);
-        Lcd_Set_Cursor(2,5);
+        
+        Lcd_Set_Cursor(2,6);
         Lcd_Write_Char(uint_to_char(valor1[0]));
         Lcd_Write_String(".");
         Lcd_Write_Char(uint_to_char(valor1[1]));
         Lcd_Write_Char(uint_to_char(valor1[2]));
         Lcd_Write_String("V");
-        Lcd_Set_Cursor(2,11);
-        Lcd_Write_String("HOLA");        
-        
+
+
+        valor2 = mapear(temp, -38.2, 125);        
+        Lcd_Set_Cursor(2,12);
+        Lcd_Write_Char(uint_to_char(valor2[0]));
+        Lcd_Write_Char(uint_to_char(valor2[1]));
+        Lcd_Write_Char(uint_to_char(valor2[2]));        
+        Lcd_Write_Char(0xDF);
+        Lcd_Write_String("C");
     }
     
     return;

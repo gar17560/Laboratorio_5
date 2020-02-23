@@ -46,7 +46,7 @@ void I2C_Master_Start();
 void I2C_Master_RepeatedStart();
 void I2C_Master_Stop();
 void I2C_Master_Write(unsigned d);
-unsigned int I2C_Master_Read(unsigned int a);
+short I2C_Master_Read(short a);
 void I2C_Slave_Init(uint8_t address);
 char uint_to_char(uint8_t numero);
 uint16_t * mapear(uint8_t valor, uint8_t limReal, uint8_t limSup);
