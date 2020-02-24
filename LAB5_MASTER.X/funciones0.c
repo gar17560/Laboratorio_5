@@ -282,3 +282,4 @@ uint16_t * mapear(uint8_t valor, uint8_t limReal, uint8_t limSup){
     return resultado;
 }
 
+

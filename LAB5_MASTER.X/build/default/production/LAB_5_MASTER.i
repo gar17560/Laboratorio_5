@@ -2676,6 +2676,105 @@ uint16_t * uint_to_array(uint8_t numero);
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 1 3
 # 25 "LAB_5_MASTER.c" 2
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 26 "LAB_5_MASTER.c" 2
+
 
 
 void config (void);
@@ -2683,17 +2782,19 @@ uint8_t contador1;
 uint8_t valor_adc;
 uint8_t contador = 0;
 uint16_t *valor1;
-short *valor2;
-uint16_t temp;
-
-
+uint16_t *valor2;
+int temp_MSB;
+uint8_t temp_LSB;
+uint8_t PEC;
+float temp;
+char print_lcd[16];
 
 void main(void) {
     config();
     Lcd_Init();
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("S1   S2     S3");
+    Lcd_Write_String("S1  S2    S3");
     I2C_Master_Init(100000);
     while(1){
         I2C_Master_Start();
@@ -2712,8 +2813,15 @@ void main(void) {
 
 
         I2C_Master_Start();
+        I2C_Master_Write(0x00);
         I2C_Master_Write(0x07);
-        temp = I2C_Master_Read(0);
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x01);
+        temp_LSB = I2C_Master_Read(0);
+        temp_MSB = I2C_Master_Read(0);
+        PEC = I2C_Master_Read(0);
         I2C_Master_Stop();
         _delay((unsigned long)((50)*(8000000/4000.0)));
 
@@ -2726,19 +2834,19 @@ void main(void) {
         Lcd_Write_Char(uint_to_char(contador1));
         _delay((unsigned long)((50)*(8000000/4000.0)));
 
-        Lcd_Set_Cursor(2,6);
+        Lcd_Set_Cursor(2,5);
         Lcd_Write_Char(uint_to_char(valor1[0]));
         Lcd_Write_String(".");
         Lcd_Write_Char(uint_to_char(valor1[1]));
         Lcd_Write_Char(uint_to_char(valor1[2]));
         Lcd_Write_String("V");
 
+        temp_MSB = temp_MSB <<8;
+        temp = (((temp_MSB+temp_LSB)*0.2)-273.15)/100;
+        Lcd_Set_Cursor(2,11);
+        sprintf(print_lcd, "%3.1f",temp);
 
-        valor2 = mapear(temp, -38.2, 125);
-        Lcd_Set_Cursor(2,12);
-        Lcd_Write_Char(uint_to_char(valor2[0]));
-        Lcd_Write_Char(uint_to_char(valor2[1]));
-        Lcd_Write_Char(uint_to_char(valor2[2]));
+        Lcd_Write_String(print_lcd);
         Lcd_Write_Char(0xDF);
         Lcd_Write_String("C");
     }

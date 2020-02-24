@@ -23,6 +23,7 @@
 #include <xc.h>
 #include "funciones0.h"
 #include <stdint.h>
+#include <stdio.h>
 #define _XTAL_FREQ 8000000
 
 void config (void);
@@ -30,17 +31,19 @@ uint8_t contador1;
 uint8_t valor_adc;
 uint8_t contador = 0;
 uint16_t *valor1;
-short *valor2;
-uint16_t temp;
-
-
+uint16_t *valor2;
+int temp_MSB;
+uint8_t temp_LSB;
+uint8_t PEC;
+float temp;
+char print_lcd[16];
 
 void main(void) {
     config();
     Lcd_Init();
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("S1   S2     S3");
+    Lcd_Write_String("S1  S2    S3");
     I2C_Master_Init(100000);      //Initialize I2C Master with 100KHz clock
     while(1){
         I2C_Master_Start();
@@ -59,8 +62,15 @@ void main(void) {
         
         ////////////////////////////////////////////////////////////////////////
         I2C_Master_Start();
+        I2C_Master_Write(0x00);
         I2C_Master_Write(0x07);
-        temp = I2C_Master_Read(0);
+        //I2C_Master_Stop();
+        
+        I2C_Master_Start();
+        I2C_Master_Write(0x01);
+        temp_LSB = I2C_Master_Read(0);
+        temp_MSB = I2C_Master_Read(0);
+        PEC = I2C_Master_Read(0);
         I2C_Master_Stop();
         __delay_ms(50);
         
@@ -73,21 +83,21 @@ void main(void) {
         Lcd_Write_Char(uint_to_char(contador1)); 
         __delay_ms(50);
         
-        Lcd_Set_Cursor(2,6);
+        Lcd_Set_Cursor(2,5);
         Lcd_Write_Char(uint_to_char(valor1[0]));
         Lcd_Write_String(".");
         Lcd_Write_Char(uint_to_char(valor1[1]));
         Lcd_Write_Char(uint_to_char(valor1[2]));
         Lcd_Write_String("V");
 
-
-        valor2 = mapear(temp, -38.2, 125);        
-        Lcd_Set_Cursor(2,12);
-        Lcd_Write_Char(uint_to_char(valor2[0]));
-        Lcd_Write_Char(uint_to_char(valor2[1]));
-        Lcd_Write_Char(uint_to_char(valor2[2]));        
+        temp_MSB = temp_MSB <<8;
+        temp = (((temp_MSB+temp_LSB)*0.2)-273.15)/100;
+        Lcd_Set_Cursor(2,11);
+        sprintf(print_lcd, "%3.1f",temp);//, contador1);
+        
+        Lcd_Write_String(print_lcd);
         Lcd_Write_Char(0xDF);
-        Lcd_Write_String("C");
+        Lcd_Write_String("C");  
     }
     
     return;
